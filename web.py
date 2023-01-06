@@ -27,7 +27,7 @@ st.text_input(label="Enter a Todo:", label_visibility='visible', placeholder="Ad
               on_change=add_todo, key='new_todo')
 
 # print(st.session_state["new_todo"])
-# st.session_state
+st.session_state
 
 # check if the text_input can be stores in a variable
 # st.write(text_input) # This works
