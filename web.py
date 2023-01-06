@@ -7,6 +7,7 @@ def add_todo():
     new_todo = st.session_state["new_todo"] + "\n"
     todos.append(new_todo.capitalize())
     functions.write_todos(todos)
+    st.session_state["new_todo"] = ''
 
 
 st.title("My todo App")
@@ -15,11 +16,13 @@ st.write("You can manage a simple todo list with this App")
 
 todos = functions.read_todos()
 for index, todo in enumerate(todos):
-    checkbox = st.checkbox(todo, key=todo)
+    todo_key = str(index)+'_'+todo
+    checkbox = st.checkbox(todo, key=todo_key)
+
     if checkbox:
         todos.pop(index)
         functions.write_todos(todos)
-        del st.session_state[todo]
+        del st.session_state[todo_key]
         st.experimental_rerun()
 
 
@@ -28,6 +31,7 @@ st.text_input(label="Enter a Todo:", label_visibility='visible', placeholder="Ad
 
 # print(st.session_state["new_todo"])
 st.session_state
+
 
 # check if the text_input can be stores in a variable
 # st.write(text_input) # This works

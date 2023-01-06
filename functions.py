@@ -5,17 +5,10 @@ FILENAME = "todos.txt"
 
 
 def read_todos():
-    """This function reads the todos from the todos.txt file. Returns an empty list if the file does not
-    exist"""
-    # filename = f"{filepath()}"
-    try:
-        with open(FILENAME, "r") as todos_file:
-            todos_list: list[str] = todos_file.readlines()
-        return todos_list
-    except FileNotFoundError:
-        # print("todos.txt will be created ...")
-        # todos_file = open("todos.txt", "w")
-        return []
+    """This function reads the todos from the todos.txt file."""
+    with open(FILENAME, "r") as todos_file:
+        todos_list: list[str] = todos_file.readlines()
+    return todos_list
 
 
 def write_todos(fn_todos):
